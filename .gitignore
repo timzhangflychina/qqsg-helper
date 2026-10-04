@@ -1,0 +1,43 @@
+# ---- 构建产物 ----
+# 只放行可直接运行的 fat-jar，其余构建中间产物都不提交
+target/*
+!target/helper-1.0-SNAPSHOT-jar-with-dependencies.jar
+/bin/
+build_test/
+*.class
+
+# ---- 注意 ----
+# 随包自带的精简 JRE 位于 jre/ 下，必须提交（千万别写成 jre/ 或 bin/ 通配，
+# 否则会把 jre/bin/*.exe 一起忽略掉，别人下载后无法运行）。
+!jre/
+!jre/**
+
+# ---- 运行期生成 ----
+# 截图目录（运行时自动创建）
+*_shots/
+shots/
+probe_shots/
+*_diag/
+
+# ---- 日志 ----
+*.log
+*.log.err
+*.out
+*.txt
+!build_sources.txt
+
+# ---- 临时 / 编辑器 ----
+.vscode/
+.idea/
+*.iml
+__pycache__/
+*.pyc
+*.bak
+*.bak-*
+*.orig
+*.tmp
+.DS_Store
+Thumbs.db
+
+# ---- 本地私有配置 ----
+deepseek.key
